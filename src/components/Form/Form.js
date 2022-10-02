@@ -1,7 +1,9 @@
+
 import { useState } from "react";
 import { useFetchContactsQuery, useCreateContactMutation} from '../../redux/slice';
 import PropTypes from 'prop-types';
 import styles from './Form.module.css';
+import Button from '@mui/material/Button';
 
 function Form() {
   
@@ -25,7 +27,7 @@ function Form() {
     const formSubmit = event => {
       event.preventDefault();  
       
-       const data = { name, phone: number };
+       const data = { name, number };
     if (
       contacts.find(
         contact => contact.name.toLowerCase() === name.toLowerCase()
@@ -48,7 +50,7 @@ function Form() {
     
    
         return (
-            <form onSubmit={formSubmit} >
+            <form onSubmit={formSubmit} className={styles.form}>
           <label className={styles.label}>
             Name
               <input
@@ -75,7 +77,8 @@ function Form() {
                 className={styles.input}
             />
           </label>
-          <button type="submit" disabled={isLoading}>Add contact</button>
+            {/* <button type="submit" className={styles.button} disabled={isLoading}>Add contact</button> */}
+            <Button type="submit" variant="contained" disabled={isLoading}>Add contact</Button>
         </form>
         );
     

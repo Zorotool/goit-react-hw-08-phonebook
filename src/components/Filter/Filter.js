@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { set } from '../../redux/filterSlice';
@@ -16,7 +15,7 @@ function Filter() {
     
     return (
 <label className={styles.label}>Find contacts by name
-        <input type="text" value={filter} onChange={changeFilter} className={styles.input}></input>
+        <input type="text" value={filter} onChange={changeFilter} ></input>
     </label>
     )   
 }

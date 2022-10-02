@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { useFetchContactsQuery } from '../../redux/slice';
 import { useSelector } from 'react-redux';
 import ContactItem from "components/ContactItem";
+import Loader from "components/Loader";
+import styles from './ContactList.module.css';
 
 
 
@@ -22,19 +24,23 @@ function ContactList() {
 
 return (
     <>
-        {isFetching && <h3>Loading...</h3>}
+        {isFetching && <Loader />}
         {contacts && (
-            <ul>
+            <ul className={styles.list}>
                 {filtredContacts.map(contact => (
                     <li key={contact.id}>
                         <ContactItem contact={contact} />
                     </li>
                 ))}
            </ul> 
-        )}        
-        </>        
-    )    
-}    
+        )}
+        
+        </>
+        
+    )
+    
+}
+    
     
 ContactList.propTypes = {
     contacts: PropTypes.arrayOf(PropTypes.shape),
